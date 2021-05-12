@@ -9,6 +9,23 @@ server:
 spring:
   application:
     name: ms-customer
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    data-username: sa
+    data-password:
+    platform: org.hibernate.dialect.H2Dialect
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+  h2:
+    console:
+      enabled: true
+      path: /h2
+      settings:
+        trace: false
+        web-allow-others: false
 
 logging:
   level:
@@ -30,7 +47,6 @@ application:
         name: "Elchin Gasimov, LinkedIn: /in/egasimov"
         url: "https://YOUR_ADDRESS/"
         email: "egasimov0@gmail.com"
-
 
 
 

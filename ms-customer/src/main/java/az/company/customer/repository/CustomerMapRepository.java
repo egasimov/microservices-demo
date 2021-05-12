@@ -1,6 +1,5 @@
 package az.company.customer.repository;
 
-import az.company.customer.model.dto.CustomerDto;
 import az.company.customer.model.entity.Customer;
 import org.springframework.stereotype.Component;
 
@@ -15,10 +14,9 @@ import java.util.stream.Collectors;
  * @Author QasimovEY on 12.05.21
  */
 @Component
-public class CustomerMapRepository implements CustomerRepository {
+public class CustomerMapRepository {
 
     private Map<Integer, Customer> customerMap = new HashMap<>();
-
 
     @PostConstruct
     void setupMap() {
@@ -57,12 +55,10 @@ public class CustomerMapRepository implements CustomerRepository {
     }
 
 
-    @Override
     public Customer findById(Integer id) {
         return customerMap.get(id);
     }
 
-    @Override
     public Customer searchByFin(String fin) {
         return customerMap.keySet()
                 .stream()
@@ -72,12 +68,10 @@ public class CustomerMapRepository implements CustomerRepository {
                 .orElse(null);
     }
 
-    @Override
     public void delete(Integer id) {
         customerMap.remove(id);
     }
 
-    @Override
     public Customer create(Customer customer) {
         Integer maxId = customerMap.keySet()
                 .stream()
@@ -89,7 +83,6 @@ public class CustomerMapRepository implements CustomerRepository {
         return customer;
     }
 
-    @Override
     public List<Customer> loadAll() {
         return customerMap.values()
                 .stream()

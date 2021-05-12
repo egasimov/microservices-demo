@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'org.company'
+group 'az.company'
 version '1.0-SNAPSHOT'
 
 repositories {
