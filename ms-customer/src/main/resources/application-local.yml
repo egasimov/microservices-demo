@@ -1,0 +1,36 @@
+server:
+  port: 9002
+  servlet:
+    context-path: /
+  tomcat:
+    accesslog:
+      enabled: true
+
+spring:
+  application:
+    name: ms-customer
+
+logging:
+  level:
+    ROOT: INFO
+    az.company.customer: DEBUG
+
+application:
+  swagger:
+    base-package: "az.company.customer.controller"
+    paths: "/.*"
+    apiInfo:
+      version: 1.0
+      title: "Customer REST API"
+      description: "Spring Boot REST API for Customer"
+      termsOfServiceUrl:
+      license: "Apache License Version 2.0"
+      licenseUrl: "https://www.apache.org/licenses/LICENSE-2.0"
+      contact:
+        name: "Elchin Gasimov, LinkedIn: /in/egasimov"
+        url: "https://YOUR_ADDRESS/"
+        email: "egasimov0@gmail.com"
+
+
+
+

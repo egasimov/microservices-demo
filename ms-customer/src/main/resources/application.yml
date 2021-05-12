@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    active: local
+
+    management:
+      endpoints:
+        web:
+          exposure:
+            include: [ "env", "health", "info" ]
