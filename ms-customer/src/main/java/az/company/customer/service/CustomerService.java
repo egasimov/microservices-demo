@@ -2,6 +2,7 @@ package az.company.customer.service;
 
 import az.company.customer.error.exception.InvalidInputException;
 import az.company.customer.error.exception.RecordNotFoundException;
+import az.company.customer.model.State;
 import az.company.customer.model.dto.CreateCustomerDto;
 import az.company.customer.model.dto.CustomerDto;
 import az.company.customer.model.entity.Customer;
@@ -54,7 +55,7 @@ public class CustomerService {
         newEntity.setBirthDate(createCustomerDto.getBirthDate());
         newEntity.setAddress(createCustomerDto.getAddress());
         newEntity.setPhoneNumber(createCustomerDto.getPhoneNumber());
-
+        newEntity.setState(State.NEW);
         newEntity = customerRepository.save(newEntity);
 
         return Transformer.toDto(newEntity);

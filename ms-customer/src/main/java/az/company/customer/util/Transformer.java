@@ -1,5 +1,6 @@
 package az.company.customer.util;
 
+import az.company.customer.model.State;
 import az.company.customer.model.dto.CustomerDto;
 import az.company.customer.model.entity.Customer;
 
@@ -16,6 +17,7 @@ public class Transformer {
         entity.setBirthDate(dto.getBirthDate());
         entity.setAddress(dto.getAddress());
         entity.setPhoneNumber(dto.getPhoneNumber());
+        entity.setState(State.of(dto.getState()).orElse(null));
         return entity;
     }
 
@@ -28,6 +30,7 @@ public class Transformer {
         dto.setBirthDate(entity.getBirthDate());
         dto.setAddress(entity.getAddress());
         dto.setPhoneNumber(entity.getPhoneNumber());
+        dto.setState(entity.getState().name());
         return dto;
     }
 }

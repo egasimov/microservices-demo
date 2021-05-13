@@ -1,11 +1,14 @@
 package az.company.customer.model.entity;
 
+import az.company.customer.model.State;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -37,7 +40,8 @@ public class Customer implements Serializable {
     private String lastName;
 
     @Column(name = "STATUS")
-    private String state;
+    @Enumerated(value = EnumType.STRING)
+    private State state;
 
     @Column(name = "FIN",unique = true)
     private String fin;
