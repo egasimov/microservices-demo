@@ -2,4 +2,5 @@ rootProject.name = 'microservices-demo'
 include 'ms-customer'
 include 'ms-account'
 include 'ms-event'
+include 'ms-card'
 

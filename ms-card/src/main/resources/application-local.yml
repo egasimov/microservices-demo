@@ -1,5 +1,5 @@
 server:
-  port: 9004
+  port: 9001
   servlet:
     context-path: /
   tomcat:
@@ -9,17 +9,17 @@ server:
 logging:
   level:
     ROOT: INFO
-    az.company.event: DEBUG
-    org.mongodb.driver: DEBUG
+    az.company.card: DEBUG
+#    org.mongodb.driver: DEBUG
 
 application:
   swagger:
-    base-package: "az.company.event.controller"
+    base-package: "az.company.card.adapter.in"
     paths: "/.*"
     apiInfo:
       version: 1.0
-      title: "Event REST API"
-      description: "Spring Boot REST API for Event"
+      title: "Card REST API"
+      description: "Spring Boot REST API for Card"
       termsOfServiceUrl:
       license: "Apache License Version 2.0"
       licenseUrl: "https://www.apache.org/licenses/LICENSE-2.0"
@@ -32,20 +32,24 @@ application:
 spring:
   data:
     mongodb:
-      database: EventDB
+      database: CardDB
       host: localhost
       port: 27017
 
 
 app:
+  clients:
+    event-service:
+      url: http://localhost:9004
   kafka:
     bootstrap-servers: localhost:9092
-    application-id-config: ms-event
+    application-id-config: ms-card
     transaction-id-prefix: tnx-01
     idempotence: true
     acks: all
     topic:
-      event-storage: topic-event-storage
+      card-order-storage: topic-card-order-storage
+      card-order-processing: topic-card-order-processing
 
 
 
