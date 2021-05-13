@@ -17,7 +17,6 @@ import java.util.List;
 @FeignClient(name = "customerClient", url = "${app.services.customer.url}")
 public interface CustomerClient {
 
-
     @ErrorHandling(codeSpecific = {@ErrorCodes(codes = 404, generate = CommonClientException.class),
             @ErrorCodes(codes = 400, generate = CommonClientException.class)},
             defaultException = CommonClientException.class)
