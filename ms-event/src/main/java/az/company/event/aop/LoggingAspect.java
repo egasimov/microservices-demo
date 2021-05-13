@@ -1,7 +1,7 @@
-package az.company.customer.aop;
+package az.company.event.aop;
 
-import az.company.customer.util.LogUtil;
-import az.company.customer.util.WebUtils;
+import az.company.event.util.LogUtil;
+import az.company.event.util.WebUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -26,7 +26,7 @@ public class LoggingAspect {
 
     private final WebUtils webUtils;
 
-    @Around("execution(* az.company.customer2.controller..*(..)))")
+    @Around("execution(* az.company.event.controller..*(..)))")
     public Object profileAllMethods(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         String uri = webUtils.getRequestUri();
 

@@ -1,0 +1,51 @@
+server:
+  port: 9004
+  servlet:
+    context-path: /
+  tomcat:
+    accesslog:
+      enabled: true
+
+logging:
+  level:
+    ROOT: INFO
+    az.kapitalbank.b2b: DEBUG
+    org.mongodb.driver: DEBUG
+
+application:
+  swagger:
+    base-package: "az.company.event.controller"
+    paths: "/.*"
+    apiInfo:
+      version: 1.0
+      title: "Event REST API"
+      description: "Spring Boot REST API for Event"
+      termsOfServiceUrl:
+      license: "Apache License Version 2.0"
+      licenseUrl: "https://www.apache.org/licenses/LICENSE-2.0"
+      contact:
+        name: "Elchin Gasimov, LinkedIn: /in/egasimov"
+        url: "https://YOUR_ADDRESS/"
+        email: "egasimov0@gmail.com"
+
+
+spring:
+  data:
+    mongodb:
+      database: EventDB
+      host: localhost
+      port: 27017
+
+
+app:
+  kafka:
+    bootstrap-servers: localhost:9092
+    application-id-config: ms-event
+    transaction-id-prefix: tnx-01
+    idempotence: true
+    acks: all
+    topic:
+      event-storage: topic-event-storage
+
+
+

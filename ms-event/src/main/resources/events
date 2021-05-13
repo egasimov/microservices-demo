@@ -1,0 +1,9 @@
+db.events.insertMany([
+
+{"uuid":"000001","message":"EVENT ORDER PLACED","source":"CARD-STREAM-APP","operationId":"1","generationTime":"2021-05-12T11:59:52"},
+{"uuid":"000002","message":"EVENT IN PROGRESS","source":"CARD-STREAM-APP","operationId":"1","generationTime":"2021-05-13T11:59:52"},
+{"uuid":"000003","message":"EVENT ACCOUNT CREATED","source":"CARD-STREAM-APP","operationId":"1","generationTime":"2021-05-14T11:59:52"},
+{"uuid":"000004","message":"EVENT CARD CREATED","source":"CARD-STREAM-APP","operationId":"1","generationTime":"2021-05-15T11:59:52"},
+{"uuid":"000005","message":"EVENT CARD ORDER FINISHED","source":"CARD-STREAM-APP","operationId":"1","generationTime":"2021-05-16T11:59:52"}
+
+])

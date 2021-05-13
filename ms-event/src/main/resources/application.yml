@@ -1,0 +1,15 @@
+spring:
+  profiles:
+    active: local
+  application:
+    name: ms-event
+
+  jackson:
+    serialization:
+      write_dates_as_timestamps: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: [ "env", "health", "info" ]

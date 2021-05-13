@@ -3,7 +3,7 @@
 
     <include resource="logback/json-console.xml"/>
 
-    <logger name="az.company.customer2" level="DEBUG"/>
+    <logger name="az.company.event" level="DEBUG"/>
 
     <springProfile name="local">
         <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
