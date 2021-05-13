@@ -1,0 +1,11 @@
+spring:
+  profiles:
+    active: local
+  application:
+    name: ms-account
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: [ "env", "health", "info" ]
