@@ -10,7 +10,7 @@ spring:
   application:
     name: ms-customer
   datasource:
-    url: jdbc:h2:mem:testdb
+    url: jdbc:h2:mem:customerDB
     driver-class-name: org.h2.Driver
     data-username: sa
     data-password:
