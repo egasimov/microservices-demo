@@ -1,7 +1,7 @@
 package az.company.account.controller;
 
-import az.company.account.service.AccountService;
 import az.company.account.model.dto.CreateAccountRequest;
+import az.company.account.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,10 +26,12 @@ public class AccountController {
     public ResponseEntity getAccountById(@PathVariable Integer id) {
         return ResponseEntity.ok(accountService.getAccountById(id));
     }
-    @GetMapping()
+
+    @GetMapping
     public ResponseEntity getAllAccounts() {
         return ResponseEntity.ok(accountService.getAllAccounts());
     }
+
     @GetMapping("/info")
     public ResponseEntity searchAccount(@RequestParam("accNo") String accountNumber) {
         return ResponseEntity.ok(accountService.searchAccount(accountNumber));
@@ -39,4 +41,5 @@ public class AccountController {
     public ResponseEntity createAccount(@RequestBody CreateAccountRequest createAccountRequest) {
         return ResponseEntity.ok(accountService.createAccount(createAccountRequest));
     }
+
 }

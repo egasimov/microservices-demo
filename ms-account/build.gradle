@@ -41,6 +41,11 @@ dependencies {
     implementation 'org.aspectj:aspectjweaver:1.9.6'
     implementation 'jakarta.validation:jakarta.validation-api:2.0.2'
     implementation 'com.h2database:h2:1.4.196'
+    implementation "org.springframework.cloud:spring-cloud-starter-openfeign"
+    implementation "io.github.openfeign:feign-annotation-error-decoder:${feign_error_decoder_version}" //new version needed
+    implementation "io.github.openfeign:feign-jackson:${feign_jackson_version}"
+    implementation "io.github.openfeign:feign-core:${feign_core_version}"
+    implementation "io.github.openfeign:feign-okhttp:${feign_okhttp_version}"
 /*    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'*/
 }

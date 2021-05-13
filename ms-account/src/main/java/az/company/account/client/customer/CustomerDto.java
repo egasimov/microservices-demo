@@ -1,4 +1,4 @@
-package az.company.customer.model.dto;
+package az.company.account.client.customer;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;

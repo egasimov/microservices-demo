@@ -1,5 +1,6 @@
 package az.company.account.error;
 
+import az.company.account.client.exception.CommonClientException;
 import az.company.account.error.exception.InvalidInputException;
 import az.company.account.error.exception.RecordNotFoundException;
 import az.company.account.error.model.ErrorResponse;
@@ -72,6 +73,20 @@ public class ErrorHandler extends ResponseEntityExceptionHandler {
                 webUtils.getLogId(),
                 HttpStatus.BAD_REQUEST.value(),
                 ex.getMessage());
+    }
+
+    @ExceptionHandler({CommonClientException.class})
+    public ResponseEntity handleCommonClientException(CommonClientException ex) {
+        addErrorLog(HttpStatus.BAD_REQUEST.value(), ex.getMessage(), "CommonClientException");
+
+        var errResponse = new ErrorResponse(
+                webUtils.getLogId(),
+                ex.getCode(),
+                ex.getMessage());
+
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(errResponse);
     }
 
     @ResponseStatus(HttpStatus.NOT_FOUND)

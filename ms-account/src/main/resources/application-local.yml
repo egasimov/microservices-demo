@@ -48,5 +48,7 @@ application:
         url: "https://YOUR_ADDRESS/"
         email: "egasimov0@gmail.com"
 
-
-
+app:
+  services:
+    customer:
+      url: http://localhost:9002

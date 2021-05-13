@@ -1,7 +1,5 @@
 package az.company.account.model.dto;
 
-import az.company.account.model.AccountType;
-import az.company.account.model.State;
 import lombok.Data;
 
 import java.math.BigDecimal;

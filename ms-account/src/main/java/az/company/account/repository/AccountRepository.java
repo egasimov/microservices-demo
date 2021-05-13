@@ -2,7 +2,6 @@ package az.company.account.repository;
 
 import az.company.account.model.entity.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.expression.spel.ast.OpAnd;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;

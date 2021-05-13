@@ -1,5 +1,8 @@
 package az.company.account.service;
 
+import az.company.account.client.CustomerClient;
+import az.company.account.client.customer.CustomerDto;
+import az.company.account.error.exception.InvalidInputException;
 import az.company.account.error.exception.RecordNotFoundException;
 import az.company.account.model.State;
 import az.company.account.model.dto.AccountDto;
@@ -9,7 +12,6 @@ import az.company.account.repository.AccountRepository;
 import az.company.account.util.Generator;
 import az.company.account.util.Transformer;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -23,6 +25,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class AccountService {
     private final AccountRepository accountRepository;
+    private final CustomerClient customerClient;
 
     public AccountDto getAccountById(Integer id) {
         Account entity = accountRepository.findById(id)
@@ -31,6 +34,12 @@ public class AccountService {
     }
 
     public Integer createAccount(CreateAccountRequest request) {
+        //validate customer existence
+
+        CustomerDto customerDto = customerClient.getCustomer(request.getCustomerId());
+        if (customerDto == null) {
+            throw InvalidInputException.of("CUSTOMER NOT EXIST,ID %s".formatted(request.getCustomerId()));
+        }
         Account entity = new Account();
         entity.setCurrency(request.getCurrency());
         entity.setAccountType(request.getAccountType());
@@ -54,10 +63,10 @@ public class AccountService {
         return Transformer.toDto(entity);
     }
 
-    public List<AccountDto> getAllAccounts(){
+    public List<AccountDto> getAllAccounts() {
         List<Account> accounts = accountRepository.findAll();
         return accounts.stream()
-                .map(item->Transformer.toDto(item))
+                .map(item -> Transformer.toDto(item))
                 .collect(Collectors.toList());
     }
 }
