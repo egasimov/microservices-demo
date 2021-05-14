@@ -34,7 +34,7 @@ logging:
 
 application:
   swagger:
-    base-package: "az.company.account.controller"
+    base-package: "az.company.event.account.controller"
     paths: "/.*"
     apiInfo:
       version: 1.0

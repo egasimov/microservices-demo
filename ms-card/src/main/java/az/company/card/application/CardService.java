@@ -23,7 +23,7 @@ public class CardService implements CreateCardUseCase, ViewCardUseCase {
         return loadCardInfoPort.load(operationId);
     }
 
-    public boolean createCard(CardEntity entity) {
+    public CardEntity createCard(CardEntity entity) {
         //checkCardExistence with operation
         CardEntity result = loadCardInfoPort.load(entity.getOperationID());
         if (result != null) {
@@ -32,7 +32,7 @@ public class CardService implements CreateCardUseCase, ViewCardUseCase {
         //need to check customerId with ms-customer
         //need to check accountId with ms-account
         createCardPort.save(entity);
-        return true;
+        return entity;
     }
 
 }

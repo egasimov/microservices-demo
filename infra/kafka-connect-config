@@ -1,0 +1,57 @@
+Create Sink Connector for Card Orders
+
+curl --location --request PUT 'http://localhost:8083/connectors/mongo-sink-connector/config' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "connector.class": "com.mongodb.kafka.connect.MongoSinkConnector",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "key.converter.schemas.enable": "false",
+    "value.converter.schemas.enable": "false",
+    "tasks.max": "1",
+    "connection.uri": "mongodb://mongodb:27017",
+    "database": "CardDB",
+    "collection": "cardOrders",
+    "topics": "topic-card-order-storage"
+}'
+
+
+#############
+Create Sink Connector for Events
+
+curl --location --request PUT 'http://localhost:8083/connectors/mongo-sink-connector/config' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "connector.class": "com.mongodb.kafka.connect.MongoSinkConnector",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "key.converter.schemas.enable": "false",
+    "value.converter.schemas.enable": "false",
+    "tasks.max": "1",
+    "connection.uri": "mongodb://mongodb:27017",
+    "database": "EventDB",
+    "collection": "events",
+    "topics": "topic-event-storage"
+}'
+
+
+
+#############
+Create Sink Connector for Cards which are processed
+
+curl --location --request PUT 'http://localhost:8083/connectors/mongo-sink-connector/config' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "connector.class": "com.mongodb.kafka.connect.MongoSinkConnector",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "key.converter.schemas.enable": "false",
+    "value.converter.schemas.enable": "false",
+    "tasks.max": "1",
+    "connection.uri": "mongodb://mongodb:27017",
+    "database": "CardDB",
+    "collection": "processedOrders",
+    "topics": "topic-card-order-processed"
+}'
+
+

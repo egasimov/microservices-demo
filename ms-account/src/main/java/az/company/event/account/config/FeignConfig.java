@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
  */
 
 @Configuration
-@EnableFeignClients("az.company.account.client")
+@EnableFeignClients("az.company.event.account.client")
 public class FeignConfig {
 
     @Bean

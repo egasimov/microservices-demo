@@ -72,6 +72,8 @@ services:
       CONNECT_OFFSET_STORAGE_REPLICATION_FACTOR: "1"
       CONNECT_STATUS_STORAGE_REPLICATION_FACTOR: "1"
       CONNECT_PLUGIN_PATH: /usr/share/java,/usr/share/confluent-hub-components,/data/connect-jars,/usr/share/confluent-hub-components/mongodb-kafka-connect-mongodb/lib/
+    volumes:
+      - ./kafka-connector/:/data/connect-jars
   ksqldb:
     image: confluentinc/ksqldb-server:0.13.0
     hostname: ksqldb

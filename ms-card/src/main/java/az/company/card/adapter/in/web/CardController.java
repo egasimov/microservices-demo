@@ -40,9 +40,9 @@ public class CardController {
     }
 
     @PostMapping
-    public ResponseEntity<String> createCard(@RequestBody CreateCardRequest createCardRequest) {
+    public ResponseEntity<CardEntity> createCard(@RequestBody CreateCardRequest createCardRequest) {
         CardEntity entity = CardOrderTransformer.toEntity(createCardRequest);
-        String result = createCardUseCase.createCard(entity) ? "SUCCESS" : "FAILURE";
-        return ResponseEntity.ok(result);
+        entity = createCardUseCase.createCard(entity);
+        return ResponseEntity.ok(entity);
     }
 }

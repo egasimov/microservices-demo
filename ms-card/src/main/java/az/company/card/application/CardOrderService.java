@@ -57,7 +57,7 @@ public class CardOrderService implements PlaceCardOrderUseCase, ViewCardOrderUse
         } catch (Exception ex) {
             log.info("Unable to publish notification for {}", event);
         }
-        return entity.getUuid();
+        return entity.getOperationId();
     }
 
     @Override

@@ -1,0 +1,31 @@
+
+server:
+  port: 9005
+
+logging:
+  level:
+    ROOT: INFO
+    az.company.cardstream: DEBUG
+
+app:
+  clients:
+    ms-card:
+      url: http://localhost:9001
+    ms-customer:
+      url: http://localhost:9002
+    ms-account:
+      url: http://localhost:9003
+    ms-event:
+      url: http://localhost:9004
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    application-id-config: card-stream-id-0
+    topic:
+      producer: topic-card-order-processed
+      consumer: topic-card-order-processing
+
+
+
+
+

@@ -36,12 +36,12 @@ public class CardOrderController {
     private final ViewCardOrderUseCase viewCardOrderUseCase;
 
     @PostMapping
-    public ResponseEntity createCardOrder(@RequestBody CardOrderCommand command) {
+    public ResponseEntity<HashMap> createCardOrder(@RequestBody CardOrderCommand command) {
         CardOrderEntity entity = CardOrderTransformer.toEntity(command);
         String operationId = placeCardOrderUseCase.placeCardOrder(entity);
         var response = new HashMap<>();
-        response.put("operationId",operationId);
-        response.put("status","IN_PROGRESS");
+        response.put("operationId", operationId);
+        response.put("status", "IN_PROGRESS");
         return ResponseEntity.ok(response);
     }
 

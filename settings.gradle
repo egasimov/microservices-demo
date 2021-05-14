@@ -3,4 +3,5 @@ include 'ms-customer'
 include 'ms-account'
 include 'ms-event'
 include 'ms-card'
+include 'card-stream'
 
