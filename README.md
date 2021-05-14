@@ -89,6 +89,11 @@ $ ./gradlew :MS-EVENT:bootRun
 ```
 
 
+```
+$ curl -X POST "http://localhost:9001/api/card/order" -H  "accept: */*" -H  "Content-Type: application/json" -d "{\"branchCode\":\"123\",\"cardHolderName\":\"ELCHIN-GASIMOV\",\"cardType\":\"MAESTRO\",\"email\":\"elchin@gmail.com\",\"fin\":\"1111111\",\"phoneNumber\":\"+940000000\",\"uuid\":\"test01\"}"
+
+```
+
 FYI: You can access appropriate microservice swagger
 ```
 Card Service:

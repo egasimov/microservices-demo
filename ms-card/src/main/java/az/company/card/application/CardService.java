@@ -6,6 +6,7 @@ import az.company.card.application.in.ViewCardUseCase;
 import az.company.card.application.out.CreateCardPort;
 import az.company.card.application.out.LoadCardInfoPort;
 import az.company.card.domain.CardEntity;
+import az.company.card.shared.Generator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +30,8 @@ public class CardService implements CreateCardUseCase, ViewCardUseCase {
         if (result != null) {
             throw InvalidInputException.of("Duplicate Operation ID %s".formatted(entity.getOperationID()));
         }
+        String pan = Generator.panGenerator(entity.getCardType(),entity.getAccountId());
+        entity.setPAN(pan);
         //need to check customerId with ms-customer
         //need to check accountId with ms-account
         createCardPort.save(entity);

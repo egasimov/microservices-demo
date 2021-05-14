@@ -20,4 +20,7 @@ public class CardEntity {
     private CardType cardType;
 
     private String operationID;
+
+    private String PAN;
+
 }
