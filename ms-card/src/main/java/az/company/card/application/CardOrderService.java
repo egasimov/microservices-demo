@@ -31,7 +31,7 @@ public class CardOrderService implements PlaceCardOrderUseCase, ViewCardOrderUse
     private final EventPublisherClient eventPublisherClient;
 
     @Override
-    public boolean placeCardOrder(CardOrderEntity entity) {
+    public String placeCardOrder(CardOrderEntity entity) {
         //check uuid duplicate occurrence
         boolean duplicateUuid = checkOrderExistence.exist(entity.getUuid());
         if (duplicateUuid) {
@@ -57,7 +57,7 @@ public class CardOrderService implements PlaceCardOrderUseCase, ViewCardOrderUse
         } catch (Exception ex) {
             log.info("Unable to publish notification for {}", event);
         }
-        return true;
+        return entity.getUuid();
     }
 
     @Override

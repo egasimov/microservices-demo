@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -35,10 +36,13 @@ public class CardOrderController {
     private final ViewCardOrderUseCase viewCardOrderUseCase;
 
     @PostMapping
-    public ResponseEntity<String> createCardOrder(@RequestBody CardOrderCommand command) {
+    public ResponseEntity createCardOrder(@RequestBody CardOrderCommand command) {
         CardOrderEntity entity = CardOrderTransformer.toEntity(command);
-        String result = placeCardOrderUseCase.placeCardOrder(entity) ? "SUCCESS" : "FAILURE";
-        return ResponseEntity.ok(result);
+        String operationId = placeCardOrderUseCase.placeCardOrder(entity);
+        var response = new HashMap<>();
+        response.put("operationId",operationId);
+        response.put("status","IN_PROGRESS");
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping(value = "/{operationId}/info")

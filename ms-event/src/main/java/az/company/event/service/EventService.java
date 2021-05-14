@@ -1,5 +1,6 @@
 package az.company.event.service;
 
+import az.company.event.error.exception.RecordNotFoundException;
 import az.company.event.model.Event;
 import az.company.event.repository.EventRepository;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,9 @@ public class EventService {
 
     public Event getLastEvent(String operationId) {
         Event event = eventRepository.loadLastEvent(operationId);
+        if (event == null) {
+            throw RecordNotFoundException.of("EVENT NOT FOUND FOR OPERATION, %s".formatted(operationId));
+        }
         return event;
     }
 

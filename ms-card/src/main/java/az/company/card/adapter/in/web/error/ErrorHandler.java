@@ -68,7 +68,7 @@ public class ErrorHandler extends ResponseEntityExceptionHandler {
 
 
     @ExceptionHandler({FeignException.class})
-    public ResponseEntity handleAll(FeignException ex) {
+    public ResponseEntity handleFeignException(FeignException ex) {
         addErrorLog(HttpStatus.INTERNAL_SERVER_ERROR.value(), ex.getMessage(), ex);
         String errMsg = "Unexpected internal server error occurs on External Client Side";
         var response = new ErrorResponse(
@@ -76,6 +76,19 @@ public class ErrorHandler extends ResponseEntityExceptionHandler {
                 ex != null ? ex.getMessage() : "Client is unreachable");
         return ResponseEntity
                 .status(ex.status())
+                .body(response);
+    }
+
+
+    @ExceptionHandler({CommonClientException.class})
+    public ResponseEntity handleCommonClient(CommonClientException ex) {
+        addErrorLog(ex.getCode(), ex.getMessage(), ex);
+        String errMsg = "Unexpected internal server error occurs on External Client Side";
+        var response = new ErrorResponse(
+                webUtils.getLogId(), ex.getCode(),
+                ex != null ? ex.getMessage() : "Client is unreachable");
+        return ResponseEntity
+                .status(ex.getCode())
                 .body(response);
     }
 
